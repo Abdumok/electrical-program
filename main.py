@@ -89,5 +89,14 @@ type11.place(x=0, y=330)
 type12 = Radiobutton(text="AL/XLPE/SWA/PVC", font=("arial", 10, "bold"), value=11, variable=cable_type, bg=BACKGROUND)
 type12.place(x=0, y=360)
 
+# Surrounded Environment:
+envi_type = IntVar()
+envir1= Radiobutton(text="Ground", font=("arial", 10, "bold"), value=0, variable=envi_type, padx=50, bg=BACKGROUND)
+envir1.place(x=185, y=30)
+envir2 = Radiobutton(text="Duct", font=("arial", 10, "bold"), value=1, variable=envi_type, padx=50, bg=BACKGROUND)
+envir2.place(x=185, y=60)
+envir3 = Radiobutton(text="Air", font=("arial", 10, "bold"), value=2, variable=envi_type, padx=100, bg=BACKGROUND)
+envir3.place(x=135, y=90)
+
 
 window.mainloop()
