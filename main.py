@@ -1,14 +1,13 @@
 from tkinter import *
 
 BACKGROUND = "#A6CDC6"
-
-
+#=================================================== Screen ===========================================================
 window= Tk()
 window.title("Project X")
 window.config(padx= 20, pady= 20, bg=BACKGROUND)
 window.minsize(width=800, height=500)
 
-#===============
+#======================================================= Labels =======================================================
 
 isolation_type = Label(text="Isolation Type :", font=("arial", 11, "bold"), bg=BACKGROUND)
 isolation_type.place(x=0, y=0)
@@ -61,9 +60,34 @@ earth_cable_text.place(x=485, y=240)
 earth_cable_description = Label(text="---", font=("arial", 10, "bold"), bg=BACKGROUND)
 earth_cable_description.place(x=578, y=240)
 
+#=============================================== Selections ===========================================================
 
-
-
+# Isolation Type:
+cable_type = IntVar()
+type1 = Radiobutton(text="CU/PVC/PVC", font=("arial", 10, "bold"), value=0, variable=cable_type, bg=BACKGROUND)
+type1.place(x=0, y=30)
+type2 = Radiobutton(text="AL/PVC/PVC", font=("arial", 10, "bold"), value=1, variable=cable_type, bg=BACKGROUND)
+type2.place(x=0, y=60)
+type3 = Radiobutton(text="CU/PVC/STA/PVC", font=("arial", 10, "bold"), value=2, variable=cable_type, bg=BACKGROUND)
+type3.place(x=0, y=90)
+type4 = Radiobutton(text="AL/PVC/STA/PVC", font=("arial", 10, "bold"), value=3, variable=cable_type, bg=BACKGROUND)
+type4.place(x=0, y=120)
+type5 = Radiobutton(text="CU/PVC/SWA/PVC", font=("arial", 10, "bold"), value=4, variable=cable_type, bg=BACKGROUND)
+type5.place(x=0, y=150)
+type6 = Radiobutton(text="AL/PVC/SWA/PVC", font=("arial", 10, "bold"), value=5, variable=cable_type, bg=BACKGROUND)
+type6.place(x=0, y=180)
+type7 = Radiobutton(text="CU/XLPE/PVC", font=("arial", 10, "bold"), value=6, variable=cable_type, bg=BACKGROUND)
+type7.place(x=0, y=210)
+type8 = Radiobutton(text="AL/XLPE/PVC", font=("arial", 10, "bold"), value=7, variable=cable_type, bg=BACKGROUND)
+type8.place(x=0, y=240)
+type9 = Radiobutton(text="CU/XLPE/STA/PVC", font=("arial", 10, "bold"), value=8, variable=cable_type, bg=BACKGROUND)
+type9.place(x=0, y=270)
+type10 = Radiobutton(text="AL/XLPE/STA/PVC", font=("arial", 10, "bold"), value=9, variable=cable_type, bg=BACKGROUND)
+type10.place(x=0, y=300)
+type11 = Radiobutton(text="CU/XLPE/SWA/PVC", font=("arial", 10, "bold"), value=10, variable=cable_type, bg=BACKGROUND)
+type11.place(x=0, y=330)
+type12 = Radiobutton(text="AL/XLPE/SWA/PVC", font=("arial", 10, "bold"), value=11, variable=cable_type, bg=BACKGROUND)
+type12.place(x=0, y=360)
 
 
 window.mainloop()
