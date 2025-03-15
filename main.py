@@ -99,5 +99,19 @@ envir2.place(x=185, y=60)
 envir3 = Radiobutton(text="Air", font=("arial", 10, "bold"), value=2, variable=envi_type, padx=100, bg=BACKGROUND)
 envir3.place(x=135, y=90)
 
+# Number of Phase:
+r_volt = IntVar()
+volt1= Radiobutton(text="3 Ø", font=("arial", 10, "bold"), value=1, variable=r_volt, padx=50, bg=BACKGROUND)
+volt1.place(x=185, y=180)
+volt2 = Radiobutton(text="1 Ø", font=("arial", 10, "bold"), value=2, variable=r_volt, padx=50, bg=BACKGROUND)
+volt2.place(x=185, y=210)
+
+# Power Type
+usage_power= IntVar()
+watt= Radiobutton(text="KW", font=("arial", 10, "bold"), value=1, variable=usage_power, padx=50, bg=BACKGROUND)
+watt.place(x=185, y=300)
+va = Radiobutton(text="KVA", font=("arial", 10, "bold"), value=2, variable=usage_power, padx=50, bg=BACKGROUND)
+va.place(x=185, y=330)
+
 
 window.mainloop()
