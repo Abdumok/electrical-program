@@ -126,4 +126,9 @@ power_factor_input.place(x=550, y=60, )
 
 voltage_input = Entry(width=10)
 voltage_input.place(x=550, y=30)
+#=============================================== Button ==============================================================
+get_button = Button(text="Get", width=10)
+get_button.place(x=330, y=420)
+window.mainloop()
+
 window.mainloop()
