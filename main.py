@@ -113,5 +113,17 @@ watt.place(x=185, y=300)
 va = Radiobutton(text="KVA", font=("arial", 10, "bold"), value=2, variable=usage_power, padx=50, bg=BACKGROUND)
 va.place(x=185, y=330)
 
+#================================================== Entry ============================================================
 
+power_input= Entry(width=10)
+power_input.place(x=550, y=0,)
+#set the courser in power input field
+power_input.focus()
+
+power_factor_input= Entry(width=10)
+power_factor_input.insert(END, string="1")
+power_factor_input.place(x=550, y=60, )
+
+voltage_input = Entry(width=10)
+voltage_input.place(x=550, y=30)
 window.mainloop()
