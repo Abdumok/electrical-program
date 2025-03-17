@@ -8,6 +8,10 @@ window.title("Project X")
 window.config(padx= 20, pady= 20, bg=BACKGROUND)
 window.minsize(width=800, height=500)
 
+#================================================ Function ============================================================
+def get_power_type():
+    power_unit.config(text=("KW" if usage_power.get() == 1 else "KVA"))
+
 #======================================================= Labels =======================================================
 
 isolation_type = Label(text="Isolation Type :", font=("arial", 11, "bold"), bg=BACKGROUND)
@@ -108,9 +112,11 @@ volt2.place(x=185, y=210)
 
 # Power Type
 usage_power= IntVar()
-watt= Radiobutton(text="KW", font=("arial", 10, "bold"), value=1, variable=usage_power, padx=50, bg=BACKGROUND)
+watt= Radiobutton(text="KW", font=("arial", 10, "bold"), value=1, variable=usage_power, padx=50, bg=BACKGROUND,
+                    command= get_power_type)
 watt.place(x=185, y=300)
-va = Radiobutton(text="KVA", font=("arial", 10, "bold"), value=2, variable=usage_power, padx=50, bg=BACKGROUND)
+va = Radiobutton(text="KVA", font=("arial", 10, "bold"), value=2, variable=usage_power, padx=50, bg=BACKGROUND,
+                    command= get_power_type)
 va.place(x=185, y=330)
 
 #================================================== Entry ============================================================
