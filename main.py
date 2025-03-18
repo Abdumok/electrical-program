@@ -55,7 +55,7 @@ def get_result():
         if cable["current"] >= current:
             cable_size = cable["size"]
             cable_description.config(text=f"{isolation}, {cable_size} mm2")
-
+            break
 
 #======================================================= Labels =======================================================
 
