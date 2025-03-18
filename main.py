@@ -3,6 +3,13 @@ import math
 import cable_catalog
 
 BACKGROUND = "#A6CDC6"
+
+ISOLATION_TYPE= ["CU/PVC/PVC", "AL/PVC/PVC", "CU/PVC/STA/PVC", "AL/PVC/STA/PVC", "CU/PVC/SWA/PVC", "AL/PVC/SWA/PVC",
+        "CU/XLPE/PVC", "AL/XLPE/PVC", "CU/XLPE/STA/PVC", "AL/XLPE/STA/PVC", "CU/XLPE/SWA/PVC", "AL/XLPE/SWA/PVC"]
+BREAKER_SIZE= [10, 16, 20, 25, 32, 40, 50, 63, 80, 125, 160, 250, 400, 630, 800, 1000, 1250, 1600, 3200]
+CABLE_SIZE= [1.5, 2.5, 4, 6, 8, 10, 16, 25, 35, 50, 70, 95, 120, 150, 185, 240, 300]
+
+ENVIRONMENT= ["ground", "duct", "air"]
 #=================================================== Screen ===========================================================
 window= Tk()
 window.title("Project X")
@@ -12,6 +19,42 @@ window.minsize(width=800, height=500)
 #================================================ Function ============================================================
 def get_power_type():
     power_unit.config(text=("KW" if usage_power.get() == 1 else "KVA"))
+
+def get_result():
+    power = float(power_input.get())
+    p_f = float(power_factor_input.get())
+    voltage = float(voltage_input.get())
+    current = 1
+
+    # 3 Phase
+    if r_volt.get() == 1:
+        voltage = voltage * math.sqrt(3)
+    # Single phase
+    elif r_volt.get() == 2:
+        voltage = voltage
+
+    # Power Kw
+    if usage_power.get() == 1:
+        current = round( ( power * 1000 / voltage * p_f ) * 1.25, 2)
+    # Power KVA
+    elif usage_power.get() == 2:
+        current = round(  (power * 1000 / voltage ) * 1.25, 2)
+
+    current_value.config(text=f"{current} Amp")
+    # Breaker Selection
+    for breaker in BREAKER_SIZE:
+        if breaker >= current:
+            breaker_description.config(text=f"{breaker} Amp")
+            break
+
+    # Cable Selection
+    isolation = ISOLATION_TYPE[cable_type.get()]
+    surround_environment = ENVIRONMENT[envi_type.get()]
+    selected_cable = cable_catalog.cable_data[isolation][surround_environment]
+    for cable in selected_cable:
+        if cable["current"] >= current:
+            cable_size = cable["size"]
+            cable_description.config(text=f"{isolation}, {cable_size} mm2")
 
 
 #======================================================= Labels =======================================================
@@ -135,7 +178,7 @@ power_factor_input.place(x=550, y=60, )
 voltage_input = Entry(width=10)
 voltage_input.place(x=550, y=30)
 #=============================================== Button ==============================================================
-get_button = Button(text="Get", width=10)
+get_button = Button(text="Get", width=10, command=get_result)
 get_button.place(x=330, y=420)
 window.mainloop()
 
