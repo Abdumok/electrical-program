@@ -55,6 +55,19 @@ def get_result():
         if cable["current"] >= current:
             cable_size = cable["size"]
             cable_description.config(text=f"{isolation}, {cable_size} mm2")
+
+            # Earth Cable Selection
+            if cable_size < 35:
+                earth_cable_size = cable_size
+                earth_cable_description.config(text=f"{earth_cable_size} mm2")
+            elif cable_size >= 35:
+                earth_cable_size = cable_size / 2
+                for size in CABLE_SIZE:
+                    if size >= earth_cable_size:
+                        earth_cable_size = size
+                        earth_cable_description.config(text=f"{earth_cable_size} mm2")
+                        break
+
             break
 
 #======================================================= Labels =======================================================
